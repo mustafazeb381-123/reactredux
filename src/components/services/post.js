@@ -56,15 +56,30 @@ export const postApi = createApi({
                 return {
                     url: `posts`,
                     method: "POST",
-                    body: {
-                        title: 'hii',
-                        body: 'its mustafazeb',
-                        id: 1
-                    },
+                    body: newPost,
                     headers: {
                         'Content-Type': 'application/json; charset=utf-8',
                     }
 
+                }
+            }
+        }), 
+        updatePost: builder.mutation({
+            query: (updatePostData) => {
+                console.log("Update Post", updatePostData);
+                const { id, ...data } = updatePostData
+                console.log("Actucall data Post", data);
+                return {
+                    url:`posts/${id}`,
+                    method: "PUT",
+                    body: data,
+                    headers: {
+                        'Content-Type': 'application/json; charset=utf-8',
+                    }
+
+
+
+                        
                 }
             }
         })
@@ -74,4 +89,4 @@ export const postApi = createApi({
     })
 })
 
-export const { useGetAllPostQuery, useGetPostByIdQuery, usePostDataQuery, useGetPostByLimitQuery, useDeletePostByIdMutation, useCreatePostMutation }  = postApi
+export const { useGetAllPostQuery, useGetPostByIdQuery, usePostDataQuery, useGetPostByLimitQuery, useDeletePostByIdMutation, useCreatePostMutation , useUpdatePostMutation, }  = postApi

@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { decrement, increment } from './counterSlice'
 
-import { postApi, useGetAllPostQuery, useGetPostByIdQuery, usePostDataQuery, useGetPostByLimitQuery, useDeletePostByIdMutation, useCreatePostMutation } from './services/post'
+import { postApi, useGetAllPostQuery, useGetPostByIdQuery, usePostDataQuery, useGetPostByLimitQuery, useDeletePostByIdMutation, useCreatePostMutation, useUpdatePostMutation } from './services/post'
 
 export default function Home() {
 
@@ -18,7 +18,23 @@ export default function Home() {
   // const responseLimitData = useGetPostByLimitQuery(5);
 
   // const [deletePost, response] = useDeletePostByIdMutation();
-  const [createPost, response] = useCreatePostMutation();
+  // const [createPost, response] = useCreatePostMutation();
+  const [updatePostData, response] = useUpdatePostMutation();
+
+  // const newPost = {
+  
+  //   title: 'hii',
+  //     body: 'its mustafazeb',
+  //       id: 1
+  
+  // }
+  const updatePost = {
+userId:1,
+    title: 'hii',
+    body: 'its mustafazeb',
+    id: 1
+
+  }
 
   console.log('response', response)
   console.log('Data', response.data)
@@ -94,10 +110,17 @@ export default function Home() {
         <button onClick={()=> {deletePost(2)}} style={{backgroundColor:'gray', height:'51px', width:'70px'}}>Detele</button>
       </div> */}
        
-      <div>
+      {/* <div>
         <h1>create Post Redux toolkit</h1>
 
-      <button onClick={()=> {createPost()}}>createPost</button>
+      <button onClick={()=> {createPost(newPost)}}>createPost</button>
+      </div> */}
+
+      <div>
+        <h1>Hello this redux and we complete it</h1>
+
+        <button onClick={()=> {updatePostData(updatePost)}}>Update data</button>
+
       </div>
      
 
